@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './styles/styles.css';
+import uniqid from 'uniqid';
 import Header from './components/Header';
 import Form from './components/Form';
 import Resume from './components/Resume';
@@ -16,7 +17,17 @@ class App extends React.Component {
         email: '',
         linkedin: '',
         github: '',
-      }
+      },
+      education: [{
+        id: uniqid(),
+        school: '',
+        city: '',
+        province: '',
+        start: '',
+        end: '',
+        degree: '',
+        major: '',
+      }]
     };
 
     this.updatePersonalInfo = this.updatePersonalInfo.bind(this);
