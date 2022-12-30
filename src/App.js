@@ -46,25 +46,17 @@ class App extends React.Component {
     })
   };
 
-  // Calls correct method to update education state
+  // Updates education state
   updateEducation(e) {
-    if (e.target.name === 'school') {
-      this.updateSchool(e);
-    }
-  };
-
-  updateSchool(e) {
-    let index = this.state.education.findIndex(education => education.id === e.target.id);
-    if (index === -1) {
-      console.log('wut');
-      return;
-    }
-    this.setState((prevState) => {
+    this.setState(prevState => {
+      let index = this.state.education.findIndex(education => education.id === e.target.id);
+      let education = Object.assign({}, prevState.education[index]);
+      education[e.target.name] = e.target.value;
       return({
         ...prevState,
         education: [
           ...this.state.education.slice(0, index),
-          Object.assign({}, this.state.education[index], {school: e.target.value}),
+          education,
           ...this.state.education.slice(index+1)
         ]
       })
