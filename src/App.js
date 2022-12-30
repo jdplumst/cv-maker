@@ -151,7 +151,7 @@ class App extends React.Component {
       <div>
         <Header />
         <div className='columns-2'>
-          <Form updatePersonalInfo={this.updatePersonalInfo} />
+          <Form updatePersonalInfo={this.updatePersonalInfo} education={this.state.education} />
           <Resume personalInfo={this.state.personalInfo} />
         </div>
       </div>
