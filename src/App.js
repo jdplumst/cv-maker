@@ -23,7 +23,6 @@ class App extends React.Component {
         name: e.target.value,
       }
     })
-    console.log(this.state.personalInfo);
   };
 
   render() {
@@ -32,7 +31,7 @@ class App extends React.Component {
         <Header />
         <div className='columns-2'>
           <Form updateName={this.updateName} />
-          <Resume />
+          <Resume personalInfo={this.state.personalInfo} />
         </div>
       </div>
       
