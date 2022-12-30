@@ -9,7 +9,7 @@ class FormInput extends React.Component {
         return (
             <div className='mb-4'>
                 <label className='block w-full'>{this.props.label}</label>
-                <input onInput={this.props.update} id={this.props.id} placeholder={this.props.placeholder} className='p-2'></input>
+                <input onInput={this.props.update} name={this.props.name} placeholder={this.props.placeholder} className='p-2'></input>
             </div>
         )
     }

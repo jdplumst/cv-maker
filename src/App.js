@@ -35,17 +35,17 @@ class App extends React.Component {
   
   // Calls correct method to update personal information state
   updatePersonalInfo(e) {
-    if (e.target.id === 'firstname') {
+    if (e.target.name === 'firstname') {
       this.updateFirstName(e);
-    } else if (e.target.id === 'lastname') {
+    } else if (e.target.name === 'lastname') {
       this.updateLastName(e);
-    } else if (e.target.id === 'phone') {
+    } else if (e.target.name === 'phone') {
       this.updatePhone(e);
-    } else if (e.target.id === 'email') {
+    } else if (e.target.name === 'email') {
       this.updateEmail(e);
-    } else if (e.target.id === 'linkedin') {
+    } else if (e.target.name === 'linkedin') {
       this.updateLinkedin(e);
-    } else if (e.target.id === 'github') {
+    } else if (e.target.name === 'github') {
       this.updateGithub(e);
     }
   };
