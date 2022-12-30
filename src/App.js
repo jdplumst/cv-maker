@@ -72,7 +72,8 @@ class App extends React.Component {
           <Form updatePersonalInfo={this.updatePersonalInfo} 
                 education={this.state.education} 
                 updateEducation={this.updateEducation} />
-          <Resume personalInfo={this.state.personalInfo} />
+          <Resume personalInfo={this.state.personalInfo}
+                  education={this.state.education} />
         </div>
       </div>
       
