@@ -31,7 +31,7 @@ class App extends React.Component {
     };
 
     this.updatePersonalInfo = this.updatePersonalInfo.bind(this);
-  }
+  };
   
   // Calls correct method to update personal information state
   updatePersonalInfo(e) {
@@ -47,6 +47,13 @@ class App extends React.Component {
       this.updateLinkedin(e);
     } else if (e.target.name === 'github') {
       this.updateGithub(e);
+    }
+  };
+
+  // Calls correct method to update education state
+  updateEducation(e) {
+    if (e.target.name === 'school') {
+      this.updateSchool(e);
     }
   };
 
@@ -158,6 +165,6 @@ class App extends React.Component {
       
     )
   }
-}
+};
 
 export default App;
