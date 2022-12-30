@@ -10,7 +10,7 @@ class Form extends React.Component {
         return (
             <div className='flex justify-center'>
                 <div className='container m-10 bg-gray-100 shadow-lg p-10'>
-                    <FormPersonalInfo updateName={this.props.updateName} />
+                    <FormPersonalInfo updatePersonalInfo={this.props.updatePersonalInfo} />
                 </div>
             </div>
         )

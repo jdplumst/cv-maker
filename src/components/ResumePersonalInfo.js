@@ -7,8 +7,10 @@ class ResumePersonalInfo extends React.Component {
 
     render() {
         return (
-            <div>
-                <h2 className='text-center'>{this.props.personalInfo.name}</h2>
+            <div className='h-96'>
+                <h2 className='text-center text-3xl'>{this.props.personalInfo.name}</h2>
+                <span>{this.props.personalInfo.phone}</span>
+                <span>{this.props.personalInfo.email}</span>
             </div>
         )
     }
