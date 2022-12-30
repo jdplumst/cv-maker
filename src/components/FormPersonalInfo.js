@@ -7,7 +7,7 @@ class FormPersonalInfo extends React.Component {
 
     render() {
         return (
-            <div className='h-screen'>
+            <div className=''>
                 <h2 className='text-3xl mb-4'>Personal Information</h2>
                 <div className='grid grid-cols-2'>
                     <div className='mb-4'>
