@@ -7,7 +7,10 @@ class FormEducation extends React.Component {
 
     render() {
         return (
-            <div>Form Education</div>
+            <div>
+                <h2 className='text-3xl mb-4'>Education</h2>
+                <div className='grid grid-cols-2'></div>
+            </div>
         )
     }
 }

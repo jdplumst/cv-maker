@@ -14,7 +14,7 @@ class ResumePersonalInfo extends React.Component {
             h2 = <h2 className='text-center text-3xl mb-4'>{this.props.personalInfo.firstname} {this.props.personalInfo.lastname}</h2>
         }
         return (
-            <div className='h-screen'>
+            <div>
                 {h2}
                 <div className='grid grid-flow-col divide-x divide-zinc-900 text-center'>
                     <span className='pr-2'>{this.props.personalInfo.phone}</span>
