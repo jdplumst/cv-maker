@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import FormPersonalInfo from './FormPersonalInfo';
 
 class Form extends React.Component {
     constructor(props) {
@@ -8,7 +9,9 @@ class Form extends React.Component {
     render() {
         return (
             <div className='flex justify-center'>
-                <div className='container m-10 bg-gray-100 shadow-lg p-10'>FORM</div>
+                <div className='container m-10 bg-gray-100 shadow-lg p-10'>
+                    <FormPersonalInfo />
+                </div>
             </div>
         )
     }
