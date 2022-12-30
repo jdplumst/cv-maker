@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Form extends React.Component {
+class Resume extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -8,10 +8,10 @@ class Form extends React.Component {
     render() {
         return (
             <div className='flex justify-center'>
-                <div className='container m-10 bg-gray-100 shadow-lg p-10'>FORM</div>
+                <div className='container m-10 bg-gray-100 shadow-lg p-10'>RESUME</div>
             </div>
         )
     }
 }
 
-export default Form;
+export default Resume;
