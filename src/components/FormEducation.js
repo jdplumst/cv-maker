@@ -13,7 +13,7 @@ class FormEducation extends React.Component {
                     {this.props.education.map((education) => {
                         return (
                             <div className='grid grid-cols-2' key={education.id}>
-                                <FormInput update={this.props.updateEducation} label='School' name='school' key={education.id} placeholder='University of Waterloo' />
+                                <FormInput update={this.props.updateEducation} label='School' name='school' id={education.id} placeholder='University of Waterloo' />
                             </div>
                         )
                     })}

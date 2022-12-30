@@ -31,6 +31,7 @@ class App extends React.Component {
     };
 
     this.updatePersonalInfo = this.updatePersonalInfo.bind(this);
+    this.updateEducation = this.updateEducation.bind(this);
   };
   
   // Calls correct method to update personal information state
@@ -153,12 +154,32 @@ class App extends React.Component {
     })
   };
 
+  updateSchool(e) {
+    let index = this.state.education.findIndex(education => education.id === e.target.id);
+    if (index === -1) {
+      console.log('wut');
+      return;
+    }
+    this.setState((prevState) => {
+      return({
+        ...prevState,
+        education: [
+          ...this.state.education.slice(0, index),
+          Object.assign({}, this.state.education[index], {school: e.target.value}),
+          ...this.state.education.slice(index+1)
+        ]
+      })
+    })
+  };
+
   render() {
     return (
       <div>
         <Header />
         <div className='columns-2'>
-          <Form updatePersonalInfo={this.updatePersonalInfo} education={this.state.education} />
+          <Form updatePersonalInfo={this.updatePersonalInfo} 
+                education={this.state.education} 
+                updateEducation={this.updateEducation} />
           <Resume personalInfo={this.state.personalInfo} />
         </div>
       </div>

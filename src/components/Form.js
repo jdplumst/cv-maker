@@ -12,7 +12,7 @@ class Form extends React.Component {
             <div className='flex justify-center'>
                 <div className='container m-10 bg-gray-100 shadow-lg p-5 h-screen'>
                     <FormPersonalInfo updatePersonalInfo={this.props.updatePersonalInfo} />
-                    <FormEducation education={this.props.education} />
+                    <FormEducation education={this.props.education} updateEducation={this.props.updateEducation} />
                 </div>
             </div>
         )
