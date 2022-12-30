@@ -27,6 +27,7 @@ class App extends React.Component {
         end: '',
         degree: '',
         major: '',
+        minor: '',
       }]
     };
 
