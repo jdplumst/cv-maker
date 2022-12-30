@@ -13,6 +13,8 @@ class App extends React.Component {
         name: '',
         phone: '',
         email: '',
+        linkedin: '',
+        github: '',
       }
     };
 
@@ -27,8 +29,12 @@ class App extends React.Component {
       this.updatePhone(e);
     } else if (e.target.id === 'email') {
       this.updateEmail(e);
+    } else if (e.target.id === 'linkedin') {
+      this.updateLinkedin(e);
+    } else if (e.target.id === 'github') {
+      this.updateGithub(e);
     }
-  }
+  };
 
   updateName(e) {
     this.setState((prevState) => {
@@ -38,6 +44,8 @@ class App extends React.Component {
           name: e.target.value,
           phone: this.state.personalInfo.phone,
           email: this.state.personalInfo.email,
+          linkedin: this.state.personalInfo.linkedin,
+          github: this.state.personalInfo.github,
         }
       })
     })
@@ -51,6 +59,8 @@ class App extends React.Component {
           name: this.state.personalInfo.name,
           phone: e.target.value,
           email: this.state.personalInfo.email,
+          linkedin: this.state.personalInfo.linkedin,
+          github: this.state.personalInfo.github,
         }
       })
     })
@@ -64,6 +74,38 @@ class App extends React.Component {
           name: this.state.personalInfo.name,
           phone: this.state.personalInfo.phone,
           email: e.target.value,
+          linkedin: this.state.personalInfo.linkedin,
+          github: this.state.personalInfo.github,
+        }
+      })
+    })
+  };
+
+  updateLinkedin(e) {
+    this.setState((prevState) => {
+      return({
+        ...prevState,
+        personalInfo: {
+          name: this.state.personalInfo.name,
+          phone: this.state.personalInfo.phone,
+          email: this.state.personalInfo.email,
+          linkedin: e.target.value,
+          github: this.state.personalInfo.github,
+        }
+      })
+    })
+  };
+
+  updateGithub(e) {
+    this.setState((prevState) => {
+      return({
+        ...prevState,
+        personalInfo: {
+          name: this.state.personalInfo.name,
+          phone: this.state.personalInfo.phone,
+          email: this.state.personalInfo.email,
+          linkedin: this.state.personalInfo.linkedin,
+          github: e.target.value,
         }
       })
     })

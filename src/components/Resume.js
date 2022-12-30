@@ -9,7 +9,7 @@ class Resume extends React.Component {
     render() {
         return (
             <div className='flex justify-center'>
-                <div className='container m-10 bg-gray-100 shadow-lg p-10'>
+                <div className='container m-10 bg-gray-100 shadow-lg p-5'>
                     <ResumePersonalInfo personalInfo={this.props.personalInfo} />
                 </div>
             </div>
