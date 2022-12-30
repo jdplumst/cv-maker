@@ -7,7 +7,11 @@ class FormPersonalInfo extends React.Component {
 
     render() {
         return (
-            <div>FORM</div>
+            <div>
+                <h2>Personal Information</h2>
+                <label className='mr-5'>Name</label>
+                <input onInput={this.props.updateName} className='p-2'></input>
+            </div>
         )
     }
 }
