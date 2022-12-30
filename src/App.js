@@ -10,7 +10,8 @@ class App extends React.Component {
 
     this.state = {
       personalInfo: {
-        name: '',
+        firstname: '',
+        lastname: '',
         phone: '',
         email: '',
         linkedin: '',
@@ -23,8 +24,10 @@ class App extends React.Component {
   
   // Calls correct method to update personal information state
   updatePersonalInfo(e) {
-    if (e.target.id === 'name') {
-      this.updateName(e);
+    if (e.target.id === 'firstname') {
+      this.updateFirstName(e);
+    } else if (e.target.id === 'lastname') {
+      this.updateLastName(e);
     } else if (e.target.id === 'phone') {
       this.updatePhone(e);
     } else if (e.target.id === 'email') {
@@ -36,12 +39,29 @@ class App extends React.Component {
     }
   };
 
-  updateName(e) {
+  updateFirstName(e) {
     this.setState((prevState) => {
       return({
         ...prevState,
         personalInfo: {
-          name: e.target.value,
+          firstname: e.target.value,
+          lastname: this.state.personalInfo.lastname,
+          phone: this.state.personalInfo.phone,
+          email: this.state.personalInfo.email,
+          linkedin: this.state.personalInfo.linkedin,
+          github: this.state.personalInfo.github,
+        }
+      })
+    })
+  };
+
+  updateLastName(e) {
+    this.setState((prevState) => {
+      return({
+        ...prevState,
+        personalInfo: {
+          firstname: this.state.personalInfo.firstname,
+          lastname: e.target.value,
           phone: this.state.personalInfo.phone,
           email: this.state.personalInfo.email,
           linkedin: this.state.personalInfo.linkedin,
@@ -56,7 +76,8 @@ class App extends React.Component {
       return({
         ...prevState,
         personalInfo: {
-          name: this.state.personalInfo.name,
+          firstname: this.state.personalInfo.firstname,
+          lastname: this.state.personalInfo.lastname,
           phone: e.target.value,
           email: this.state.personalInfo.email,
           linkedin: this.state.personalInfo.linkedin,
@@ -71,7 +92,8 @@ class App extends React.Component {
       return({
         ...prevState,
         personalInfo: {
-          name: this.state.personalInfo.name,
+          firstname: this.state.personalInfo.firstname,
+          lastname: this.state.personalInfo.lastname,
           phone: this.state.personalInfo.phone,
           email: e.target.value,
           linkedin: this.state.personalInfo.linkedin,
@@ -86,7 +108,8 @@ class App extends React.Component {
       return({
         ...prevState,
         personalInfo: {
-          name: this.state.personalInfo.name,
+          firstname: this.state.personalInfo.firstname,
+          lastname: this.state.personalInfo.lastname,
           phone: this.state.personalInfo.phone,
           email: this.state.personalInfo.email,
           linkedin: e.target.value,
@@ -101,7 +124,8 @@ class App extends React.Component {
       return({
         ...prevState,
         personalInfo: {
-          name: this.state.personalInfo.name,
+          firstname: this.state.personalInfo.firstname,
+          lastname: this.state.personalInfo.lastname,
           phone: this.state.personalInfo.phone,
           email: this.state.personalInfo.email,
           linkedin: this.state.personalInfo.linkedin,

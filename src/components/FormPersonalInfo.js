@@ -11,8 +11,12 @@ class FormPersonalInfo extends React.Component {
                 <h2 className='text-3xl mb-4'>Personal Information</h2>
                 <div className='grid grid-cols-2'>
                     <div className='mb-4'>
-                        <label className='block w-full'>Name</label>
-                        <input onInput={this.props.updatePersonalInfo} id='name' placeholder='FirstName LastName' className='p-2'></input>
+                        <label className='block w-full'>First Name</label>
+                        <input onInput={this.props.updatePersonalInfo} id='firstname' placeholder='First Name' className='p-2'></input>
+                    </div>
+                    <div className='mb-4'>
+                        <label className='block w-full'>Last Name</label>
+                        <input onInput={this.props.updatePersonalInfo} id='lastname' placeholder='Last Name' className='p-2'></input>
                     </div>
                     <div className='mb-4'>
                         <label className='block w-full'>Phone Number</label>
