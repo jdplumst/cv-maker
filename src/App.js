@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './styles.css';
+import './styles/styles.css';
+import Form from './components/Form';
 
 class App extends React.Component {
   constructor() {
@@ -9,7 +10,7 @@ class App extends React.Component {
   render() {
     return (
       <div className='columns-2'>
-        <div className='flex justify-center'>HEY</div>
+        <Form />
         <div className='flex justify-center'>BYE</div>
       </div>
     )
