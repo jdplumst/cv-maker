@@ -39,10 +39,10 @@ class App extends React.Component {
         company: '',
         city: '',
         province: '',
-        descriptions: {
+        descriptions: [{
           id: uniqid(),
-          description: '',
-        }
+          description: 'bababooey',
+        }]
       }]
     };
 

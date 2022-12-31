@@ -53,14 +53,15 @@ class FormEducation extends React.Component {
                                            name='minor' 
                                            id={education.id} 
                                            placeholder='Computer Science' />
-                                <span></span>
-                                <button onClick={this.props.deleteEducation} className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded w-1/2 mb-4'>Delete</button>
                                 <hr className='border-black mb-4'></hr>
                                 <hr className='border-black mb-4'></hr>
                             </div>
                         )
                     })}
-                <button onClick={this.props.addEducation} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4'>Add Education</button>
+                <div className='w-full flex'>
+                    <button onClick={this.props.addEducation} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 w-40 mr-auto'>Add Education</button>
+                    <button onClick={this.props.deleteEducation} className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mb-4 w-40 ml-auto'>Delete</button>
+                </div>
                 <hr className='border-black mb-4 border-2'></hr>
             </div>
         )
