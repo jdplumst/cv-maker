@@ -50,20 +50,23 @@ class FormExperience extends React.Component {
                                             <label className='block'>Job Description {index}</label>
                                             <textarea id={description.id} className='w-full'></textarea>
                                             <div className='w-full flex'>
-                                                <button onClick={this.props.deleteDescription} className='bg-amber-500 hover:bg-amber-700 text-white font-bold py-2 px-4 rounded mb-4 w-40 ml-auto'>Delete</button>
+                                                <button onClick={this.props.deleteDescription} className='bg-amber-500 hover:bg-amber-700 text-white font-bold py-2 px-4 rounded mb-4 w-48 ml-auto'>Delete Description</button>
                                             </div>
                                         </div>
                                     )
                                 })}
+                                <button onClick={this.props.addDescription} className='bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mb-4 w-48 mr-auto'>Add Description</button>
+                                <span></span>
+                                <hr className='border-black mb-4'></hr>
+                                <hr className='border-black mb-4'></hr>
+                                <span></span>
+                                <button onClick={this.props.deleteExperience} className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mb-4 w-48 ml-auto'>Delete Experience</button>
+                                <hr className='border-black mb-4'></hr>
+                                <hr className='border-black mb-4'></hr>
                             </div>
                         )
                     })}
-                    <button onClick={this.props.addDescription} className='bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mb-4 w-40 mr-auto'>Add Description</button>
-                    <hr className='border-black mb-4'></hr>
-                    <div className='w-full flex'>
-                        <button onClick={this.props.addExperience} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 w-40 mr-auto'>Add Experience</button>
-                        <button onClick={this.props.deleteExperience} className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mb-4 w-40 ml-auto'>Delete</button>
-                    </div>
+                    <button onClick={this.props.addExperience} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 w-48 mr-auto'>Add Experience</button>
                     <hr className='border-black mb-4 border-2'></hr>
             </div>
         )

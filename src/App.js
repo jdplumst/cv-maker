@@ -41,7 +41,7 @@ class App extends React.Component {
         province: '',
         descriptions: [{
           id: uniqid(),
-          description: 'bababooey',
+          description: '',
         }]
       }]
     };
@@ -50,6 +50,7 @@ class App extends React.Component {
     this.updateEducation = this.updateEducation.bind(this);
     this.addEducation = this.addEducation.bind(this);
     this.deleteEducation = this.deleteEducation.bind(this);
+    this.addExperience = this.addExperience.bind(this);
   };
   
   // Updates personal information state
@@ -112,6 +113,25 @@ class App extends React.Component {
     })
   };
 
+  // Adds new experience object to this.state.experience
+  addExperience() {
+    this.setState({
+      experience: this.state.experience.concat({
+        id: uniqid(),
+        job: '',
+        start: '',
+        end: '',
+        company: '',
+        city: '',
+        province: '',
+        descriptions: [{
+          id: uniqid(),
+          description: '',
+        }]
+      }) 
+    })
+  };
+
 
   render() {
     return (
@@ -123,7 +143,8 @@ class App extends React.Component {
                 updateEducation={this.updateEducation}
                 addEducation={this.addEducation}
                 deleteEducation={this.deleteEducation}
-                experience={this.state.experience} />
+                experience={this.state.experience}
+                addExperience={this.addExperience} />
           <Resume personalInfo={this.state.personalInfo}
                   education={this.state.education} />
         </div>
