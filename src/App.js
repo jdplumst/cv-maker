@@ -30,7 +30,7 @@ class App extends React.Component {
         major: '',
         minor: '',
       }],
-      
+
       experience: [{
         id: uniqid(),
         job: '',
@@ -122,7 +122,8 @@ class App extends React.Component {
                 education={this.state.education} 
                 updateEducation={this.updateEducation}
                 addEducation={this.addEducation}
-                deleteEducation={this.deleteEducation} />
+                deleteEducation={this.deleteEducation}
+                experience={this.state.experience} />
           <Resume personalInfo={this.state.personalInfo}
                   education={this.state.education} />
         </div>

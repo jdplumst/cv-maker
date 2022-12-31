@@ -61,6 +61,7 @@ class FormEducation extends React.Component {
                         )
                     })}
                 <button onClick={this.props.addEducation} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4'>Add Education</button>
+                <hr className='border-black mb-4 border-2'></hr>
             </div>
         )
     }

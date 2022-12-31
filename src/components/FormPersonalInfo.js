@@ -36,6 +36,7 @@ class FormPersonalInfo extends React.Component {
                                name='github' 
                                placeholder='github.com/username' />
                 </div>
+                <hr className='border-black mb-4 border-2'></hr>
             </div>
         )
     }
