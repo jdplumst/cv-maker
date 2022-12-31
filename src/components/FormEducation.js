@@ -60,7 +60,7 @@ class FormEducation extends React.Component {
                             </div>
                         )
                     })}
-                <button onClick={this.props.addEducation} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>Add Education</button>
+                <button onClick={this.props.addEducation} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4'>Add Education</button>
             </div>
         )
     }

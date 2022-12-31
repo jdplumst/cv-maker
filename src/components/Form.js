@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import FormPersonalInfo from './FormPersonalInfo';
 import FormEducation from './FormEducation';
+import FormExperience from './FormExperience';
 
 class Form extends React.Component {
     constructor(props) {
@@ -16,6 +17,7 @@ class Form extends React.Component {
                                    updateEducation={this.props.updateEducation} 
                                    addEducation={this.props.addEducation}
                                    deleteEducation={this.props.deleteEducation} />
+                    <FormExperience />
                 </div>
             </div>
         )
