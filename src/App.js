@@ -34,6 +34,7 @@ class App extends React.Component {
     this.updatePersonalInfo = this.updatePersonalInfo.bind(this);
     this.updateEducation = this.updateEducation.bind(this);
     this.addEducation = this.addEducation.bind(this);
+    this.deleteEducation = this.deleteEducation.bind(this);
   };
   
   // Updates personal information state
@@ -65,6 +66,7 @@ class App extends React.Component {
     })
   };
 
+  // Adds new education object to this.state.education
   addEducation() {
     this.setState({
       education: this.state.education.concat({
@@ -81,6 +83,20 @@ class App extends React.Component {
     })
   }
 
+  // Deletes education from this.state.education with specific id
+  deleteEducation(e) {
+    this.setState(prevState => {
+      let index = this.state.education.findIndex(education => education.id === e.target.parentNode.id);
+      return({
+        ...prevState,
+        education: [
+          ...this.state.education.slice(0, index),
+          ...this.state.education.slice(index+1)
+        ]
+      })
+    })
+  };
+
 
   render() {
     return (
@@ -90,7 +106,8 @@ class App extends React.Component {
           <Form updatePersonalInfo={this.updatePersonalInfo} 
                 education={this.state.education} 
                 updateEducation={this.updateEducation}
-                addEducation={this.addEducation} />
+                addEducation={this.addEducation}
+                deleteEducation={this.deleteEducation} />
           <Resume personalInfo={this.state.personalInfo}
                   education={this.state.education} />
         </div>

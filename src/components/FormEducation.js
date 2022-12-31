@@ -12,7 +12,7 @@ class FormEducation extends React.Component {
                 <h2 className='text-3xl mb-4'>Education</h2>
                     {this.props.education.map((education) => {
                         return (
-                            <div className='grid grid-cols-2' key={education.id}>
+                            <div className='grid grid-cols-2' key={education.id} id={education.id}>
                                 <FormInput update={this.props.updateEducation} 
                                            label='School' 
                                            name='school' 
@@ -53,6 +53,8 @@ class FormEducation extends React.Component {
                                            name='minor' 
                                            id={education.id} 
                                            placeholder='Computer Science' />
+                                <span></span>
+                                <button onClick={this.props.deleteEducation} className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded w-1/2 mb-4'>Delete</button>
                                 <hr className='border-black mb-4'></hr>
                                 <hr className='border-black mb-4'></hr>
                             </div>

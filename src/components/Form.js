@@ -14,7 +14,8 @@ class Form extends React.Component {
                     <FormPersonalInfo updatePersonalInfo={this.props.updatePersonalInfo} />
                     <FormEducation education={this.props.education} 
                                    updateEducation={this.props.updateEducation} 
-                                   addEducation={this.props.addEducation} />
+                                   addEducation={this.props.addEducation}
+                                   deleteEducation={this.props.deleteEducation} />
                 </div>
             </div>
         )
