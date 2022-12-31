@@ -18,6 +18,7 @@ class App extends React.Component {
         linkedin: '',
         github: '',
       },
+
       education: [{
         id: uniqid(),
         school: '',
@@ -28,6 +29,20 @@ class App extends React.Component {
         degree: '',
         major: '',
         minor: '',
+      }],
+      
+      experience: [{
+        id: uniqid(),
+        job: '',
+        start: '',
+        end: '',
+        company: '',
+        city: '',
+        province: '',
+        descriptions: {
+          id: uniqid(),
+          description: '',
+        }
       }]
     };
 
