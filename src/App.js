@@ -33,6 +33,7 @@ class App extends React.Component {
 
     this.updatePersonalInfo = this.updatePersonalInfo.bind(this);
     this.updateEducation = this.updateEducation.bind(this);
+    this.addEducation = this.addEducation.bind(this);
   };
   
   // Updates personal information state
@@ -64,6 +65,23 @@ class App extends React.Component {
     })
   };
 
+  addEducation() {
+    this.setState({
+      education: this.state.education.concat({
+        id: uniqid(),
+        school: '',
+        city: '',
+        province: '',
+        start: '',
+        end: '',
+        degree: '',
+        major: '',
+        minor: '',
+      }) 
+    })
+  }
+
+
   render() {
     return (
       <div>
@@ -71,7 +89,8 @@ class App extends React.Component {
         <div className='columns-2'>
           <Form updatePersonalInfo={this.updatePersonalInfo} 
                 education={this.state.education} 
-                updateEducation={this.updateEducation} />
+                updateEducation={this.updateEducation}
+                addEducation={this.addEducation} />
           <Resume personalInfo={this.state.personalInfo}
                   education={this.state.education} />
         </div>
