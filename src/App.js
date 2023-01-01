@@ -52,6 +52,7 @@ class App extends React.Component {
     this.deleteEducation = this.deleteEducation.bind(this);
     this.updateExperience = this.updateExperience.bind(this);
     this.addExperience = this.addExperience.bind(this);
+    this.deleteExperience = this.deleteExperience.bind(this);
   };
   
   // Updates personal information state
@@ -156,6 +157,20 @@ class App extends React.Component {
     })
   };
 
+  // Deletes experience from this.state.experience with specific id
+  deleteExperience(e) {
+    this.setState(prevState => {
+      let index = this.state.experience.findIndex(experience => experience.id === e.target.parentNode.id);
+      return({
+        ...prevState,
+        experience: [
+          ...this.state.experience.slice(0, index),
+          ...this.state.experience.slice(index+1)
+        ]
+      })
+    })
+  };
+
 
   render() {
     return (
@@ -169,7 +184,8 @@ class App extends React.Component {
                 deleteEducation={this.deleteEducation}
                 experience={this.state.experience}
                 updateExperience={this.updateExperience}
-                addExperience={this.addExperience} />
+                addExperience={this.addExperience}
+                deleteExperience={this.deleteExperience} />
           <Resume personalInfo={this.state.personalInfo}
                   education={this.state.education} />
         </div>
