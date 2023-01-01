@@ -48,14 +48,14 @@ class FormExperience extends React.Component {
                                     return (
                                         <div key={description.id} className='w-full col-span-2'>
                                             <label className='block'>Job Description {index}</label>
-                                            <textarea id={description.id} className='w-full'></textarea>
+                                            <textarea onInput={this.props.updateExperienceDescription} name='description' id={description.id} className='w-full'></textarea>
                                             <div className='w-full flex'>
-                                                <button onClick={this.props.deleteDescription} className='bg-amber-500 hover:bg-amber-700 text-white font-bold py-2 px-4 rounded mb-4 w-48 ml-auto'>Delete Description</button>
+                                                <button onClick={this.props.deleteExperienceDescription} className='bg-amber-500 hover:bg-amber-700 text-white font-bold py-2 px-4 rounded mb-4 w-48 ml-auto'>Delete Description</button>
                                             </div>
                                         </div>
                                     )
                                 })}
-                                <button onClick={this.props.addDescription} className='bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mb-4 w-48 mr-auto'>Add Description</button>
+                                <button onClick={this.props.addExperienceDescription} className='bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mb-4 w-48 mr-auto'>Add Description</button>
                                 <span></span>
                                 <hr className='border-black mb-4'></hr>
                                 <hr className='border-black mb-4'></hr>

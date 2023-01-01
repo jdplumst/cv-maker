@@ -50,6 +50,7 @@ class App extends React.Component {
     this.updateEducation = this.updateEducation.bind(this);
     this.addEducation = this.addEducation.bind(this);
     this.deleteEducation = this.deleteEducation.bind(this);
+    this.updateExperience = this.updateExperience.bind(this);
     this.addExperience = this.addExperience.bind(this);
   };
   
@@ -113,6 +114,24 @@ class App extends React.Component {
     })
   };
 
+  // Updates experience state
+  updateExperience(e) {
+    this.setState(prevState => {
+      let index = this.state.experience.findIndex(experience => experience.id === e.target.id);
+      let experience = Object.assign({}, prevState.experience[index]);
+      experience[e.target.name] = e.target.value;
+      return({
+        ...prevState,
+        experience: [
+          ...this.state.experience.slice(0, index),
+          experience,
+          ...this.state.experience.slice(index+1)
+        ]
+      })
+    })
+    console.log(this.state.experience);
+  };
+
   // Adds new experience object to this.state.experience
   addExperience() {
     this.setState({
@@ -144,6 +163,7 @@ class App extends React.Component {
                 addEducation={this.addEducation}
                 deleteEducation={this.deleteEducation}
                 experience={this.state.experience}
+                updateExperience={this.updateExperience}
                 addExperience={this.addExperience} />
           <Resume personalInfo={this.state.personalInfo}
                   education={this.state.education} />
