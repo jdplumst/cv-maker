@@ -119,7 +119,12 @@ class App extends React.Component {
     this.setState(prevState => {
       let index = this.state.experience.findIndex(experience => experience.id === e.target.id);
       let experience = Object.assign({}, prevState.experience[index]);
-      experience[e.target.name] = e.target.value;
+      if (e.target.name !== 'description') {
+        experience[e.target.name] = e.target.value;
+      } else {
+        let descriptionIndex = this.state.experience[index].descriptions.findIndex(description => description.id === e.target.dataset.descriptionid)
+        experience.descriptions[descriptionIndex][e.target.name] = e.target.value;
+      }
       return({
         ...prevState,
         experience: [
