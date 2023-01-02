@@ -352,7 +352,8 @@ class App extends React.Component {
                 deleteProjectDescription={this.deleteProjectDescription} />
           <Resume personalInfo={this.state.personalInfo}
                   education={this.state.education}
-                  experience={this.state.experience} />
+                  experience={this.state.experience}
+                  projects={this.state.projects} />
         </div>
       </div>
       
