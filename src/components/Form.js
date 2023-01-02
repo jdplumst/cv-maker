@@ -3,6 +3,7 @@ import FormPersonalInfo from './FormPersonalInfo';
 import FormEducation from './FormEducation';
 import FormExperience from './FormExperience';
 import FormProjects from './FormProjects';
+import FormSkills from './FormSkills';
 
 class Form extends React.Component {
     constructor(props) {
@@ -30,6 +31,7 @@ class Form extends React.Component {
                                   deleteProject={this.props.deleteProject}
                                   addProjectDescription={this.props.addProjectDescription}
                                   deleteProjectDescription={this.props.deleteProjectDescription} />
+                    <FormSkills />
                 </div>
             </div>
         )
