@@ -67,6 +67,7 @@ class App extends React.Component {
     this.addExperienceDescription = this.addExperienceDescription.bind(this);
     this.deleteExperienceDescription = this.deleteExperienceDescription.bind(this);
     this.updateProjects = this.updateProjects.bind(this);
+    this.addProject = this.addProject.bind(this);
   };
   
   // Updates personal information state
@@ -250,6 +251,22 @@ class App extends React.Component {
     })
   };
 
+  // Adds new project object to this.state.projects
+  addProject() {
+    this.setState({
+      projects: this.state.projects.concat({
+        id: uniqid(),
+        project: '',
+        tech: '',
+        link: '',
+        descriptions: [{
+          id: uniqid(),
+          decription: '',
+        }]
+      }) 
+    })
+  };
+
   render() {
     return (
       <div>
@@ -267,7 +284,8 @@ class App extends React.Component {
                 addExperienceDescription={this.addExperienceDescription}
                 deleteExperienceDescription={this.deleteExperienceDescription}
                 projects={this.state.projects}
-                updateProjects={this.updateProjects} />
+                updateProjects={this.updateProjects}
+                addProject={this.addProject} />
           <Resume personalInfo={this.state.personalInfo}
                   education={this.state.education}
                   experience={this.state.experience} />
