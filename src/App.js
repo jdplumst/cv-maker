@@ -43,6 +43,17 @@ class App extends React.Component {
           id: uniqid(),
           description: '',
         }]
+      }],
+
+      projects: [{
+        id: uniqid(),
+        project: '',
+        tech: '',
+        link: '',
+        descriptions: [{
+          id: uniqid(),
+          decription: '',
+        }]
       }]
     };
 
