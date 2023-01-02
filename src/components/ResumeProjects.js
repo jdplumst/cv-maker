@@ -17,10 +17,10 @@ class ResumeProjects extends React.Component {
                                     <span><strong>{project.project}</strong> | <em>{project.tech}</em></span>
                                     <span className='text-right'>{project.link}</span>
                                 </div>
-                                <ul className="mb-4">
+                                <ul className="mb-4 list-disc list-inside">
                                 {project.descriptions.map((description) => {
                                     return (
-                                        <li key={description.id}>- {description.description}</li>
+                                        <li key={description.id}>{description.description}</li>
                                     )
                                 })}
                                 </ul>

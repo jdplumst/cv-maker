@@ -19,10 +19,10 @@ class ResumeExperience extends React.Component {
                                     <span>{experience.company}</span>
                                     <span className='text-right'>{experience.city}, {experience.province}</span>
                                 </div>
-                                <ul className="mb-4">
+                                <ul className="mb-4 list-disc list-inside">
                                 {experience.descriptions.map((description) => {
                                     return (
-                                        <li key={description.id}>- {description.description}</li>
+                                        <li key={description.id}>{description.description}</li>
                                     )
                                 })}
                                 </ul>
