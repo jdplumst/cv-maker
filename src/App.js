@@ -53,6 +53,7 @@ class App extends React.Component {
     this.updateExperience = this.updateExperience.bind(this);
     this.addExperience = this.addExperience.bind(this);
     this.deleteExperience = this.deleteExperience.bind(this);
+    this.addExperienceDescription = this.addExperienceDescription.bind(this);
   };
   
   // Updates personal information state
@@ -135,7 +136,6 @@ class App extends React.Component {
         ]
       })
     })
-    console.log(this.state.experience);
   };
 
   // Adds new experience object to this.state.experience
@@ -171,6 +171,28 @@ class App extends React.Component {
     })
   };
 
+  // Adds new experience description object to this.state.experience.descriptions
+  addExperienceDescription(e) {
+    this.setState(prevState => {
+      let index = this.state.experience.findIndex(experience => experience.id === e.target.parentNode.id);
+      let experience = Object.assign({}, prevState.experience[index]);
+      let descriptions = experience.descriptions;
+      descriptions = descriptions.concat({
+        id: uniqid(),
+        description: '',
+      })
+      experience['descriptions'] = descriptions;
+      return({
+        ...prevState,
+        experience: [
+          ...this.state.experience.slice(0, index),
+          experience,
+          ...this.state.experience.slice(index+1)
+        ]
+      })
+    })
+  };
+
 
   render() {
     return (
@@ -185,7 +207,8 @@ class App extends React.Component {
                 experience={this.state.experience}
                 updateExperience={this.updateExperience}
                 addExperience={this.addExperience}
-                deleteExperience={this.deleteExperience} />
+                deleteExperience={this.deleteExperience}
+                addExperienceDescription={this.addExperienceDescription} />
           <Resume personalInfo={this.state.personalInfo}
                   education={this.state.education} />
         </div>
