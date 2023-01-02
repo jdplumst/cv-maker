@@ -28,7 +28,8 @@ class Form extends React.Component {
                                   updateProjects={this.props.updateProjects}
                                   addProject={this.props.addProject}
                                   deleteProject={this.props.deleteProject}
-                                  addProjectDescription={this.props.addProjectDescription} />
+                                  addProjectDescription={this.props.addProjectDescription}
+                                  deleteProjectDescription={this.props.deleteProjectDescription} />
                 </div>
             </div>
         )
