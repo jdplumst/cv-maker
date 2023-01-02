@@ -66,6 +66,7 @@ class App extends React.Component {
     this.deleteExperience = this.deleteExperience.bind(this);
     this.addExperienceDescription = this.addExperienceDescription.bind(this);
     this.deleteExperienceDescription = this.deleteExperienceDescription.bind(this);
+    this.updateProjects = this.updateProjects.bind(this);
   };
   
   // Updates personal information state
@@ -227,6 +228,27 @@ class App extends React.Component {
     })
   };
 
+  // Updates projects state
+  updateProjects(e) {
+    this.setState(prevState => {
+      let index = this.state.projects.findIndex(project => project.id === e.target.id);
+      let project = Object.assign({}, prevState.projects[index]);
+      if (e.target.name !== 'description') {
+        project[e.target.name] = e.target.value;
+      } else {
+        let descriptionIndex = this.state.projects[index].descriptions.findIndex(description => description.id === e.target.dataset.descriptionid)
+        project.descriptions[descriptionIndex][e.target.name] = e.target.value;
+      }
+      return({
+        ...prevState,
+        projects: [
+          ...this.state.projects.slice(0, index),
+          project,
+          ...this.state.projects.slice(index+1)
+        ]
+      })
+    })
+  };
 
   render() {
     return (
@@ -244,7 +266,8 @@ class App extends React.Component {
                 deleteExperience={this.deleteExperience}
                 addExperienceDescription={this.addExperienceDescription}
                 deleteExperienceDescription={this.deleteExperienceDescription}
-                projects={this.state.projects} />
+                projects={this.state.projects}
+                updateProjects={this.updateProjects} />
           <Resume personalInfo={this.state.personalInfo}
                   education={this.state.education}
                   experience={this.state.experience} />
