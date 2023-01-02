@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import FormPersonalInfo from './FormPersonalInfo';
 import FormEducation from './FormEducation';
 import FormExperience from './FormExperience';
+import FormProjects from './FormProjects';
 
 class Form extends React.Component {
     constructor(props) {
@@ -23,6 +24,7 @@ class Form extends React.Component {
                                     deleteExperience={this.props.deleteExperience}
                                     addExperienceDescription={this.props.addExperienceDescription}
                                     deleteExperienceDescription={this.props.deleteExperienceDescription} />
+                    <FormProjects projects={this.props.projects} />
                 </div>
             </div>
         )
