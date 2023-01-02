@@ -49,7 +49,7 @@ class FormExperience extends React.Component {
                                         <div key={description.id} className='w-full col-span-2'>
                                             <label className='block'>Job Description {index}</label>
                                             <textarea onInput={this.props.updateExperience} name='description' id={experience.id} data-descriptionid={description.id} className='w-full p-2'></textarea>
-                                            <div className='w-full flex'>
+                                            <div id={experience.id} data-descriptionid={description.id} className='w-full flex'>
                                                 <button onClick={this.props.deleteExperienceDescription} className='bg-amber-500 hover:bg-amber-700 text-white font-bold py-2 px-4 rounded mb-4 w-48 ml-auto'>Delete Description</button>
                                             </div>
                                         </div>

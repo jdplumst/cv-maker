@@ -54,6 +54,7 @@ class App extends React.Component {
     this.addExperience = this.addExperience.bind(this);
     this.deleteExperience = this.deleteExperience.bind(this);
     this.addExperienceDescription = this.addExperienceDescription.bind(this);
+    this.deleteExperienceDescription = this.deleteExperienceDescription.bind(this);
   };
   
   // Updates personal information state
@@ -193,6 +194,29 @@ class App extends React.Component {
     })
   };
 
+  // Deletes description from this.state.experience.description with specific id
+  deleteExperienceDescription(e) {
+    this.setState(prevState => {
+      let index = this.state.experience.findIndex(experience => experience.id === e.target.parentNode.id);
+      let experience = Object.assign({}, prevState.experience[index]);
+      let descriptionIndex = this.state.experience[index].descriptions.findIndex(description => description.id === e.target.parentNode.dataset.descriptionid)
+      let descriptions = [
+        ...this.state.experience[index].descriptions.slice(0, descriptionIndex),
+        ...this.state.experience[index].descriptions.slice(descriptionIndex+1)
+      ]
+      experience['descriptions'] = descriptions;
+      return({
+        ...prevState,
+        experience: [
+          ...this.state.experience.slice(0, index),
+          experience,
+          ...this.state.experience.slice(index+1)
+        ]
+      })
+    })
+    console.log(this.state.experience);
+  };
+
 
   render() {
     return (
@@ -208,7 +232,8 @@ class App extends React.Component {
                 updateExperience={this.updateExperience}
                 addExperience={this.addExperience}
                 deleteExperience={this.deleteExperience}
-                addExperienceDescription={this.addExperienceDescription} />
+                addExperienceDescription={this.addExperienceDescription}
+                deleteExperienceDescription={this.deleteExperienceDescription} />
           <Resume personalInfo={this.state.personalInfo}
                   education={this.state.education} />
         </div>
