@@ -37,12 +37,12 @@ class FormExperience extends React.Component {
                                            label='Starting Date' 
                                            name='start' 
                                            id={experience.id} 
-                                           placeholder='Sept. 2016' />
+                                           placeholder='Jan. 2020' />
                                 <FormInput update={this.props.updateExperience} 
                                            label='Ending Date' 
                                            name='end' 
                                            id={experience.id} 
-                                           placeholder='Apr. 2022' />
+                                           placeholder='Oct. 2022' />
                                 {experience.descriptions.map((description, index) => {
                                     index++;
                                     return (
