@@ -214,7 +214,6 @@ class App extends React.Component {
         ]
       })
     })
-    console.log(this.state.experience);
   };
 
 
@@ -235,7 +234,8 @@ class App extends React.Component {
                 addExperienceDescription={this.addExperienceDescription}
                 deleteExperienceDescription={this.deleteExperienceDescription} />
           <Resume personalInfo={this.state.personalInfo}
-                  education={this.state.education} />
+                  education={this.state.education}
+                  experience={this.state.experience} />
         </div>
       </div>
       
