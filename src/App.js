@@ -68,6 +68,7 @@ class App extends React.Component {
     this.deleteExperienceDescription = this.deleteExperienceDescription.bind(this);
     this.updateProjects = this.updateProjects.bind(this);
     this.addProject = this.addProject.bind(this);
+    this.deleteProject = this.deleteProject.bind(this);
   };
   
   // Updates personal information state
@@ -267,6 +268,20 @@ class App extends React.Component {
     })
   };
 
+  // Deletes project from this.state.projects with specific id
+  deleteProject(e) {
+    this.setState(prevState => {
+      let index = this.state.projects.findIndex(project => project.id === e.target.parentNode.id);
+      return({
+        ...prevState,
+        projects: [
+          ...this.state.projects.slice(0, index),
+          ...this.state.projects.slice(index+1)
+        ]
+      })
+    })
+  };
+
   render() {
     return (
       <div>
@@ -285,7 +300,8 @@ class App extends React.Component {
                 deleteExperienceDescription={this.deleteExperienceDescription}
                 projects={this.state.projects}
                 updateProjects={this.updateProjects}
-                addProject={this.addProject} />
+                addProject={this.addProject}
+                deleteProject={this.deleteProject} />
           <Resume personalInfo={this.state.personalInfo}
                   education={this.state.education}
                   experience={this.state.experience} />
