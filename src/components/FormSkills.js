@@ -12,7 +12,7 @@ class FormSkills extends React.Component {
                 <label className='block'>Languages</label>
                 <textarea onInput={this.props.updateSkills} 
                           name='languages' 
-                          placeholder='JavaScript, HTML, CSS, Python, C, C++, Bash' 
+                          placeholder='JavaScript, TypeScript, HTML, CSS' 
                           className='w-full p-2'></textarea>
                 <label className='block'>Libraries and Frameworks</label>
                 <textarea onInput={this.props.updateSkills} 
@@ -22,7 +22,7 @@ class FormSkills extends React.Component {
                 <label className='block'>Developer Tools</label>
                 <textarea onInput={this.props.updateSkills} 
                           name='devtools' 
-                          placeholder='Git/GitHub, Linux, VS Code, Jira, Postman, Insomnia, SQL Server, Oracle DB' 
+                          placeholder='Git/GitHub, Linux, VS Code, MongoDB' 
                           className='w-full p-2'></textarea>
             </div>
         )

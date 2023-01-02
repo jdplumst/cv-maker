@@ -25,7 +25,7 @@ class FormProjects extends React.Component {
                                            placeholder='React, JavaScript, TailwindCSS' />
                                 <div className='mb-4 col-span-2 w-full'>
                                     <label className='block w-full'>App URL</label>
-                                    <input onInput={this.props.updateProjects} name='link' id={project.id} placeholder='https://jdplumst.github.io/cv-project/' className='p-2 w-full'></input>
+                                    <input onInput={this.props.updateProjects} name='link' id={project.id} placeholder='https://username.github.io/cv-project/' className='p-2 w-full'></input>
                                 </div>
                                 {project.descriptions.map((description, index) => {
                                     index++;
