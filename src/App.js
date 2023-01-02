@@ -69,6 +69,7 @@ class App extends React.Component {
     this.updateProjects = this.updateProjects.bind(this);
     this.addProject = this.addProject.bind(this);
     this.deleteProject = this.deleteProject.bind(this);
+    this.addProjectDescription = this.addProjectDescription.bind(this);
   };
   
   // Updates personal information state
@@ -282,6 +283,28 @@ class App extends React.Component {
     })
   };
 
+  // Adds new project description object to this.state.projects.descriptions
+  addProjectDescription(e) {
+    this.setState(prevState => {
+      let index = this.state.projects.findIndex(project => project.id === e.target.parentNode.id);
+      let project = Object.assign({}, prevState.projects[index]);
+      let descriptions = project.descriptions;
+      descriptions = descriptions.concat({
+        id: uniqid(),
+        description: '',
+      })
+      project['descriptions'] = descriptions;
+      return({
+        ...prevState,
+        projects: [
+          ...this.state.projects.slice(0, index),
+          project,
+          ...this.state.projects.slice(index+1)
+        ]
+      })
+    })
+  };
+
   render() {
     return (
       <div>
@@ -301,7 +324,8 @@ class App extends React.Component {
                 projects={this.state.projects}
                 updateProjects={this.updateProjects}
                 addProject={this.addProject}
-                deleteProject={this.deleteProject} />
+                deleteProject={this.deleteProject}
+                addProjectDescription={this.addProjectDescription} />
           <Resume personalInfo={this.state.personalInfo}
                   education={this.state.education}
                   experience={this.state.experience} />
