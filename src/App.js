@@ -77,6 +77,7 @@ class App extends React.Component {
     this.deleteProject = this.deleteProject.bind(this);
     this.addProjectDescription = this.addProjectDescription.bind(this);
     this.deleteProjectDescription = this.deleteProjectDescription.bind(this);
+    this.updateSkills = this.updateSkills.bind(this);
   };
   
   // Updates personal information state
@@ -334,6 +335,18 @@ class App extends React.Component {
     })
   };
 
+  // Updates skills state
+  updateSkills(e) {
+    this.setState(prevState => {
+      let skills = Object.assign({}, prevState.skills);
+      skills[e.target.name] = e.target.value;
+      return ({
+        ...prevState,
+        skills
+      })
+    })
+  };
+
   render() {
     return (
       <div>
@@ -355,7 +368,8 @@ class App extends React.Component {
                 addProject={this.addProject}
                 deleteProject={this.deleteProject}
                 addProjectDescription={this.addProjectDescription}
-                deleteProjectDescription={this.deleteProjectDescription} />
+                deleteProjectDescription={this.deleteProjectDescription}
+                updateSkills={this.updateSkills} />
           <Resume personalInfo={this.state.personalInfo}
                   education={this.state.education}
                   experience={this.state.experience}
