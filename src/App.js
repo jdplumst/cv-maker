@@ -54,7 +54,13 @@ class App extends React.Component {
           id: uniqid(),
           decription: '',
         }]
-      }]
+      }],
+
+      skills: {
+        languages: '',
+        libraries: '',
+        devtools: '',
+      }
     };
 
     this.updatePersonalInfo = this.updatePersonalInfo.bind(this);
