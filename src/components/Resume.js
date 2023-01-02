@@ -3,6 +3,7 @@ import ResumePersonalInfo from './ResumePersonalInfo';
 import ResumeEducation from './ResumeEducation';
 import ResumeExperience from './ResumeExperience';
 import ResumeProjects from './ResumeProjects';
+import ResumeSkills from './ResumeSkills';
 
 class Resume extends React.Component {
     constructor(props) {
@@ -17,6 +18,7 @@ class Resume extends React.Component {
                     <ResumeEducation education={this.props.education} />
                     <ResumeExperience experience={this.props.experience} />
                     <ResumeProjects projects={this.props.projects} />
+                    <ResumeSkills skills={this.props.skills} />
                 </div>
             </div>
         )
