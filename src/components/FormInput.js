@@ -1,18 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class FormInput extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return (
-            <div className='mb-4'>
-                <label className='block w-full'>{this.props.label}</label>
-                <input onInput={this.props.update} name={this.props.name} id={this.props.id} placeholder={this.props.placeholder} className='p-2'></input>
-            </div>
-        )
-    }
+function FormInput(props) {
+    return (
+        <div className='mb-4'>
+            <label className='block w-full'>{props.label}</label>
+            <input onInput={props.update} name={props.name} id={props.id} placeholder={props.placeholder} className='p-2'></input>
+        </div>
+    )
 }
 
 export default FormInput;
