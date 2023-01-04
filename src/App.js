@@ -304,7 +304,7 @@ function App() {
   return (
     <div>
       <Header />
-      <div className='columns-2'>
+      <div className='flex justify-around'>
         <Form updatePersonalInfo={updatePersonalInfo} 
               education={education} 
               updateEducation={updateEducation}

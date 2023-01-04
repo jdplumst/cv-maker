@@ -7,8 +7,8 @@ import ResumeSkills from './ResumeSkills';
 
 function Resume(props) {
     return (
-        <div className='flex justify-center'>
-            <div className='container m-10 bg-gray-100 shadow-lg p-5 h-fit overflow-auto'>
+        <div className='flex justify-center w-1/2'>
+            <div className='container m-10 bg-gray-100 shadow-lg p-5 h-fit w-5/6 overflow-auto'>
                 <ResumePersonalInfo personalInfo={props.personalInfo} />
                 <ResumeEducation education={props.education} />
                 <ResumeExperience experience={props.experience} />

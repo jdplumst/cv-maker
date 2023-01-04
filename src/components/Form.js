@@ -7,8 +7,8 @@ import FormSkills from './FormSkills';
 
 function Form(props) {
     return (
-        <div className='flex justify-center'>
-            <div className='container m-10 bg-gray-100 shadow-lg p-5 h-fit overflow-auto'>
+        <div className='flex justify-center w-1/2'>
+            <div className='container m-10 bg-gray-100 shadow-lg p-5 h-fit w-5/6 overflow-auto'>
                 <FormPersonalInfo updatePersonalInfo={props.updatePersonalInfo} />
                 <FormEducation education={props.education} 
                                updateEducation={props.updateEducation} 
