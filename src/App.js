@@ -1,118 +1,91 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import './styles/styles.css';
 import uniqid from 'uniqid';
 import Header from './components/Header';
 import Form from './components/Form';
 import Resume from './components/Resume';
 
-class App extends React.Component {
-  constructor() {
-    super();
+function App() {
+  const [personalInfo, setPersonalInfo] = useState({
+    firstname: '',
+    lastname: '',
+    phone: '',
+    email: '',
+    linkedin: '',
+    github: '',
+  });
 
-    this.state = {
-      personalInfo: {
-        firstname: '',
-        lastname: '',
-        phone: '',
-        email: '',
-        linkedin: '',
-        github: '',
-      },
+  const [education, setEducation] = useState([{
+    id: uniqid(),
+    school: '',
+    city: '',
+    province: '',
+    start: '',
+    end: '',
+    degree: '',
+    major: '',
+    minor: '',
+  }]);
 
-      education: [{
-        id: uniqid(),
-        school: '',
-        city: '',
-        province: '',
-        start: '',
-        end: '',
-        degree: '',
-        major: '',
-        minor: '',
-      }],
+  const [experience, setExperience] = useState([{
+    id: uniqid(),
+    job: '',
+    start: '',
+    end: '',
+    company: '',
+    city: '',
+    province: '',
+    descriptions: [{
+      id: uniqid(),
+      description: '',
+    }]
+  }]);
 
-      experience: [{
-        id: uniqid(),
-        job: '',
-        start: '',
-        end: '',
-        company: '',
-        city: '',
-        province: '',
-        descriptions: [{
-          id: uniqid(),
-          description: '',
-        }]
-      }],
+  const [projects, setProjects] = useState([{
+    id: uniqid(),
+    project: '',
+    tech: '',
+    link: '',
+    descriptions: [{
+      id: uniqid(),
+      decription: '',
+    }]
+  }]);
 
-      projects: [{
-        id: uniqid(),
-        project: '',
-        tech: '',
-        link: '',
-        descriptions: [{
-          id: uniqid(),
-          decription: '',
-        }]
-      }],
+  const [skills, setSkills] = useState({
+    languages: '',
+    libraries: '',
+    devtools: '',
+  });
 
-      skills: {
-        languages: '',
-        libraries: '',
-        devtools: '',
-      }
-    };
-
-    this.updatePersonalInfo = this.updatePersonalInfo.bind(this);
-    this.updateEducation = this.updateEducation.bind(this);
-    this.addEducation = this.addEducation.bind(this);
-    this.deleteEducation = this.deleteEducation.bind(this);
-    this.updateExperience = this.updateExperience.bind(this);
-    this.addExperience = this.addExperience.bind(this);
-    this.deleteExperience = this.deleteExperience.bind(this);
-    this.addExperienceDescription = this.addExperienceDescription.bind(this);
-    this.deleteExperienceDescription = this.deleteExperienceDescription.bind(this);
-    this.updateProjects = this.updateProjects.bind(this);
-    this.addProject = this.addProject.bind(this);
-    this.deleteProject = this.deleteProject.bind(this);
-    this.addProjectDescription = this.addProjectDescription.bind(this);
-    this.deleteProjectDescription = this.deleteProjectDescription.bind(this);
-    this.updateSkills = this.updateSkills.bind(this);
-  };
-  
   // Updates personal information state
-  updatePersonalInfo(e) {
-    this.setState(prevState => {
-      let personalInfo = Object.assign({}, prevState.personalInfo);
-      personalInfo[e.target.name] = e.target.value;
-      return ({
-        ...prevState,
-        personalInfo
-      })
+  function updatePersonalInfo(e) {
+    setPersonalInfo(prevPersonalInfo => {
+      let currPersonalInfo = Object.assign({}, prevPersonalInfo);
+      currPersonalInfo[e.target.name] = e.target.value;
+      return currPersonalInfo;
     })
   };
 
   // Updates education state
-  updateEducation(e) {
-    this.setState(prevState => {
-      let index = this.state.education.findIndex(education => education.id === e.target.id);
-      let education = Object.assign({}, prevState.education[index]);
-      education[e.target.name] = e.target.value;
-      return({
-        ...prevState,
-        education: [
-          ...this.state.education.slice(0, index),
-          education,
-          ...this.state.education.slice(index+1)
-        ]
-      })
+  function updateEducation(e) {
+    setEducation(prevEducation => {
+      let index = prevEducation.findIndex(education => education.id === e.target.id);
+      let currEducation = Object.assign({}, prevEducation[index]);
+      currEducation[e.target.name] = e.target.value;
+      return ([
+        ...prevEducation.slice(0, index),
+        currEducation,
+        ...prevEducation.slice(index+1)
+      ])
     })
   };
 
   // Adds new education object to this.state.education
-  addEducation() {
-    this.setState({
-      education: this.state.education.concat({
+  function addEducation() {
+    setEducation(prevEducation => {
+      return ([
+        ...prevEducation, {
         id: uniqid(),
         school: '',
         city: '',
@@ -121,265 +94,239 @@ class App extends React.Component {
         end: '',
         degree: '',
         major: '',
-        minor: '',
-      }) 
+        minor: ''
+        }
+      ])
     })
-  }
+  };
 
   // Deletes education from this.state.education with specific id
-  deleteEducation(e) {
-    this.setState(prevState => {
-      let index = this.state.education.findIndex(education => education.id === e.target.parentNode.id);
-      return({
-        ...prevState,
-        education: [
-          ...this.state.education.slice(0, index),
-          ...this.state.education.slice(index+1)
-        ]
-      })
+  function deleteEducation(e) {
+    setEducation(prevEducation => {
+      let index = prevEducation.findIndex(education => education.id === e.target.parentNode.id);
+      return ([
+        ...prevEducation.slice(0, index),
+        ...prevEducation.slice(index+1)
+      ])
     })
   };
 
   // Updates experience state
-  updateExperience(e) {
-    this.setState(prevState => {
-      let index = this.state.experience.findIndex(experience => experience.id === e.target.id);
-      let experience = Object.assign({}, prevState.experience[index]);
-      if (e.target.name !== 'description') {
-        experience[e.target.name] = e.target.value;
+  function updateExperience(e) {
+    setExperience(prevExperience => {
+      let index = prevExperience.findIndex(experience => experience.id === e.target.id);
+      let currExperience = Object.assign({}, prevExperience[index]);
+      if (e.target.name !== 'description') { 
+        currExperience[e.target.name] = e.target.value;
       } else {
-        let descriptionIndex = this.state.experience[index].descriptions.findIndex(description => description.id === e.target.dataset.descriptionid)
-        experience.descriptions[descriptionIndex][e.target.name] = e.target.value;
+        let descriptionIndex = prevExperience[index].descriptions.findIndex(description => description.id === e.target.dataset.descriptionid)
+        currExperience.descriptions[descriptionIndex][e.target.name] = e.target.value;
       }
-      return({
-        ...prevState,
-        experience: [
-          ...this.state.experience.slice(0, index),
-          experience,
-          ...this.state.experience.slice(index+1)
-        ]
-      })
+      return([
+        ...prevExperience.slice(0, index),
+        currExperience,
+        ...prevExperience.slice(index+1)
+      ])
     })
   };
 
   // Adds new experience object to this.state.experience
-  addExperience() {
-    this.setState({
-      experience: this.state.experience.concat({
-        id: uniqid(),
-        job: '',
-        start: '',
-        end: '',
-        company: '',
-        city: '',
-        province: '',
-        descriptions: [{
+  function addExperience() {
+    setExperience(prevExperience => {
+      return([
+        ...prevExperience,
+        {
           id: uniqid(),
-          description: '',
-        }]
-      }) 
+          job: '',
+          start: '',
+          end: '',
+          company: '',
+          city: '',
+          province: '',
+          descriptions: [{
+            id: uniqid(),
+            description: '',
+          }]
+        }
+      ])
     })
   };
 
   // Deletes experience from this.state.experience with specific id
-  deleteExperience(e) {
-    this.setState(prevState => {
-      let index = this.state.experience.findIndex(experience => experience.id === e.target.parentNode.id);
-      return({
-        ...prevState,
-        experience: [
-          ...this.state.experience.slice(0, index),
-          ...this.state.experience.slice(index+1)
-        ]
-      })
+  function deleteExperience(e) {
+    setExperience(prevExperience => {
+      let index = prevExperience.findIndex(experience => experience.id === e.target.parentNode.id);
+      return ([
+        ...prevExperience.slice(0, index),
+        ...prevExperience.slice(index+1)
+      ])
     })
   };
 
   // Adds new experience description object to this.state.experience.descriptions
-  addExperienceDescription(e) {
-    this.setState(prevState => {
-      let index = this.state.experience.findIndex(experience => experience.id === e.target.parentNode.id);
-      let experience = Object.assign({}, prevState.experience[index]);
-      let descriptions = experience.descriptions;
+  function addExperienceDescription(e) {
+    setExperience(prevExperience => {
+      let index = prevExperience.findIndex(experience => experience.id === e.target.parentNode.id);
+      let currExperience = Object.assign({}, prevExperience[index]);
+      let descriptions = currExperience.descriptions;
       descriptions = descriptions.concat({
         id: uniqid(),
         description: '',
       })
-      experience['descriptions'] = descriptions;
-      return({
-        ...prevState,
-        experience: [
-          ...this.state.experience.slice(0, index),
-          experience,
-          ...this.state.experience.slice(index+1)
-        ]
-      })
+      currExperience['descriptions'] = descriptions;
+      return ([
+        ...prevExperience.slice(0, index),
+        currExperience,
+        ...prevExperience.slice(index+1)
+      ])
     })
   };
 
   // Deletes description from this.state.experience.description with specific id
-  deleteExperienceDescription(e) {
-    this.setState(prevState => {
-      let index = this.state.experience.findIndex(experience => experience.id === e.target.parentNode.id);
-      let experience = Object.assign({}, prevState.experience[index]);
-      let descriptionIndex = this.state.experience[index].descriptions.findIndex(description => description.id === e.target.parentNode.dataset.descriptionid)
+  function deleteExperienceDescription(e) {
+    setExperience(prevExperience => {
+      let index = prevExperience.findIndex(experience => experience.id === e.target.parentNode.id);
+      let currExperience = Object.assign({}, prevExperience[index]);
+      let descriptionIndex = prevExperience[index].descriptions.findIndex(description => description.id === e.target.parentNode.dataset.descriptionid)
       let descriptions = [
-        ...this.state.experience[index].descriptions.slice(0, descriptionIndex),
-        ...this.state.experience[index].descriptions.slice(descriptionIndex+1)
+        ...prevExperience[index].descriptions.slice(0, descriptionIndex),
+        ...prevExperience[index].descriptions.slice(descriptionIndex+1)
       ]
-      experience['descriptions'] = descriptions;
-      return({
-        ...prevState,
-        experience: [
-          ...this.state.experience.slice(0, index),
-          experience,
-          ...this.state.experience.slice(index+1)
-        ]
-      })
+      currExperience['descriptions'] = descriptions;
+      return ([
+        ...prevExperience.slice(0, index),
+        currExperience,
+        ...prevExperience.slice(index+1)
+      ])
     })
   };
 
   // Updates projects state
-  updateProjects(e) {
-    this.setState(prevState => {
-      let index = this.state.projects.findIndex(project => project.id === e.target.id);
-      let project = Object.assign({}, prevState.projects[index]);
+  function updateProjects(e) {
+    setProjects(prevProjects => {
+      let index = prevProjects.findIndex(project => project.id === e.target.id);
+      let currProject = Object.assign({}, prevProjects[index]);
       if (e.target.name !== 'description') {
-        project[e.target.name] = e.target.value;
+        currProject[e.target.name] = e.target.value;
       } else {
-        let descriptionIndex = this.state.projects[index].descriptions.findIndex(description => description.id === e.target.dataset.descriptionid)
-        project.descriptions[descriptionIndex][e.target.name] = e.target.value;
+        let descriptionIndex = prevProjects[index].descriptions.findIndex(description => description.id === e.target.dataset.descriptionid)
+        currProject.descriptions[descriptionIndex][e.target.name] = e.target.value;
       }
-      return({
-        ...prevState,
-        projects: [
-          ...this.state.projects.slice(0, index),
-          project,
-          ...this.state.projects.slice(index+1)
-        ]
-      })
+      return ([
+        ...prevProjects.slice(0, index),
+        currProject,
+        ...prevProjects.slice(index+1)
+      ])
     })
   };
 
   // Adds new project object to this.state.projects
-  addProject() {
-    this.setState({
-      projects: this.state.projects.concat({
-        id: uniqid(),
-        project: '',
-        tech: '',
-        link: '',
-        descriptions: [{
+  function addProject() {
+    setProjects(prevProjects => {
+      return ([
+        ...prevProjects,
+        {
           id: uniqid(),
-          decription: '',
-        }]
-      }) 
+          project: '',
+          tech: '',
+          link: '',
+          descriptions: [{
+            id: uniqid(),
+            decription: '',
+          }]
+        }
+      ])
     })
   };
 
   // Deletes project from this.state.projects with specific id
-  deleteProject(e) {
-    this.setState(prevState => {
-      let index = this.state.projects.findIndex(project => project.id === e.target.parentNode.id);
-      return({
-        ...prevState,
-        projects: [
-          ...this.state.projects.slice(0, index),
-          ...this.state.projects.slice(index+1)
-        ]
-      })
+  function deleteProject(e) {
+    setProjects(prevProjects => {
+      let index = prevProjects.findIndex(project => project.id === e.target.parentNode.id);
+      return ([
+        ...prevProjects.slice(0, index),
+        ...prevProjects.slice(index+1)
+      ])
     })
   };
 
   // Adds new project description object to this.state.projects.descriptions
-  addProjectDescription(e) {
-    this.setState(prevState => {
-      let index = this.state.projects.findIndex(project => project.id === e.target.parentNode.id);
-      let project = Object.assign({}, prevState.projects[index]);
-      let descriptions = project.descriptions;
+  function addProjectDescription(e) {
+    setProjects(prevProjects => {
+      let index = prevProjects.findIndex(project => project.id === e.target.parentNode.id);
+      let currProject = Object.assign({}, prevProjects[index]);
+      let descriptions = currProject.descriptions;
       descriptions = descriptions.concat({
         id: uniqid(),
         description: '',
       })
-      project['descriptions'] = descriptions;
-      return({
-        ...prevState,
-        projects: [
-          ...this.state.projects.slice(0, index),
-          project,
-          ...this.state.projects.slice(index+1)
-        ]
-      })
+      currProject['descriptions'] = descriptions;
+      return ([
+        ...prevProjects.slice(0, index),
+        currProject,
+        ...prevProjects.slice(index+1)
+      ])
     })
   };
 
   // Deletes description from this.state.projects.description with specific id
-  deleteProjectDescription(e) {
-    this.setState(prevState => {
-      let index = this.state.projects.findIndex(project => project.id === e.target.parentNode.id);
-      let project = Object.assign({}, prevState.projects[index]);
-      let descriptionIndex = this.state.projects[index].descriptions.findIndex(description => description.id === e.target.parentNode.dataset.descriptionid)
+  function deleteProjectDescription(e) {
+    setProjects(prevProjects => {
+      let index = prevProjects.findIndex(project => project.id === e.target.parentNode.id);
+      let currProject = Object.assign({}, prevProjects[index]);
+      let descriptionIndex = prevProjects[index].descriptions.findIndex(description => description.id === e.target.parentNode.dataset.descriptionid)
       let descriptions = [
-        ...this.state.projects[index].descriptions.slice(0, descriptionIndex),
-        ...this.state.projects[index].descriptions.slice(descriptionIndex+1)
+        ...prevProjects[index].descriptions.slice(0, descriptionIndex),
+        ...prevProjects[index].descriptions.slice(descriptionIndex+1)
       ]
-      project['descriptions'] = descriptions;
-      return({
-        ...prevState,
-        projects: [
-          ...this.state.projects.slice(0, index),
-          project,
-          ...this.state.projects.slice(index+1)
-        ]
-      })
+      currProject['descriptions'] = descriptions;
+      return ([
+        ...prevProjects.slice(0, index),
+        currProject,
+        ...prevProjects.slice(index+1)
+      ])
     })
   };
 
   // Updates skills state
-  updateSkills(e) {
-    this.setState(prevState => {
-      let skills = Object.assign({}, prevState.skills);
-      skills[e.target.name] = e.target.value;
-      return ({
-        ...prevState,
-        skills
-      })
+  function updateSkills(e) {
+    setSkills(prevSkills => {
+      let currSkills = Object.assign({}, prevSkills);
+      currSkills[e.target.name] = e.target.value;
+      return (currSkills);
     })
   };
 
-  render() {
-    return (
-      <div>
-        <Header />
-        <div className='columns-2'>
-          <Form updatePersonalInfo={this.updatePersonalInfo} 
-                education={this.state.education} 
-                updateEducation={this.updateEducation}
-                addEducation={this.addEducation}
-                deleteEducation={this.deleteEducation}
-                experience={this.state.experience}
-                updateExperience={this.updateExperience}
-                addExperience={this.addExperience}
-                deleteExperience={this.deleteExperience}
-                addExperienceDescription={this.addExperienceDescription}
-                deleteExperienceDescription={this.deleteExperienceDescription}
-                projects={this.state.projects}
-                updateProjects={this.updateProjects}
-                addProject={this.addProject}
-                deleteProject={this.deleteProject}
-                addProjectDescription={this.addProjectDescription}
-                deleteProjectDescription={this.deleteProjectDescription}
-                updateSkills={this.updateSkills} />
-          <Resume personalInfo={this.state.personalInfo}
-                  education={this.state.education}
-                  experience={this.state.experience}
-                  projects={this.state.projects}
-                  skills={this.state.skills} />
-        </div>
+  return (
+    <div>
+      <Header />
+      <div className='columns-2'>
+        <Form updatePersonalInfo={updatePersonalInfo} 
+              education={education} 
+              updateEducation={updateEducation}
+              addEducation={addEducation}
+              deleteEducation={deleteEducation}
+              experience={experience}
+              updateExperience={updateExperience}
+              addExperience={addExperience}
+              deleteExperience={deleteExperience}
+              addExperienceDescription={addExperienceDescription}
+              deleteExperienceDescription={deleteExperienceDescription}
+              projects={projects}
+              updateProjects={updateProjects}
+              addProject={addProject}
+              deleteProject={deleteProject}
+              addProjectDescription={addProjectDescription}
+              deleteProjectDescription={deleteProjectDescription}
+              updateSkills={updateSkills} />
+        <Resume personalInfo={personalInfo}
+                education={education}
+                experience={experience}
+                projects={projects}
+                skills={skills} />
       </div>
-      
-    )
-  }
-};
+    </div>
+  )
+} 
 
 export default App;
