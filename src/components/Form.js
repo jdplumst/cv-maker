@@ -32,37 +32,4 @@ function Form(props) {
     )
 }
 
-// class Form extends React.Component {
-//     constructor(props) {
-//         super(props);
-//     }
-
-//     render() {
-//         return (
-//             <div className='flex justify-center'>
-//                 <div className='container m-10 bg-gray-100 shadow-lg p-5 h-fit overflow-auto'>
-//                     <FormPersonalInfo updatePersonalInfo={this.props.updatePersonalInfo} />
-//                     <FormEducation education={this.props.education} 
-//                                    updateEducation={this.props.updateEducation} 
-//                                    addEducation={this.props.addEducation}
-//                                    deleteEducation={this.props.deleteEducation} />
-//                     <FormExperience experience={this.props.experience}
-//                                     updateExperience={this.props.updateExperience}
-//                                     addExperience={this.props.addExperience}
-//                                     deleteExperience={this.props.deleteExperience}
-//                                     addExperienceDescription={this.props.addExperienceDescription}
-//                                     deleteExperienceDescription={this.props.deleteExperienceDescription} />
-//                     <FormProjects projects={this.props.projects}
-//                                   updateProjects={this.props.updateProjects}
-//                                   addProject={this.props.addProject}
-//                                   deleteProject={this.props.deleteProject}
-//                                   addProjectDescription={this.props.addProjectDescription}
-//                                   deleteProjectDescription={this.props.deleteProjectDescription} />
-//                     <FormSkills updateSkills={this.props.updateSkills} />
-//                 </div>
-//             </div>
-//         )
-//     }
-// }
-
 export default Form;
