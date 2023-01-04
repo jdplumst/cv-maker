@@ -58,6 +58,10 @@ function App() {
     devtools: '',
   });
 
+  useEffect(() => {
+    document.title = 'CV Maker';
+  });
+
   // Updates personal information state
   function updatePersonalInfo(e) {
     setPersonalInfo(prevPersonalInfo => {
